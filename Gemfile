@@ -20,6 +20,8 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'pry'
+  gem 'launchy'
+  # save_and_open_page - triggers launchy. Insert before expect/should line in capybara spec methods.
 end
 
 group :test do
