@@ -1,0 +1,11 @@
+<% content_for(:title, "Project Cutenberg") %>
+
+<h2>Chapters</h2>
+
+<ul>
+  <% @chapters.each do |chapter| %>
+    <li><%= link_to chapter.title, chapter_path(chapter) %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add a chapter", new_chapter_path %></p>
