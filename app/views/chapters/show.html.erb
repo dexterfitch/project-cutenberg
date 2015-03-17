@@ -8,6 +8,6 @@
 
 <p>
   <%= link_to "Back to all chapters", chapters_path %> |
-  <%= link_to edit_chapter_path(@chapter) do %><i class="fa fa-cog"></i><% end %> |
-  <%= link_to chapter_path(@chapter), :data => {:confirm => "You sure you want to delete this?", :method => "delete"} do %><i class="fa fa-trash-o"></i><% end %>
+  <%= link_to edit_chapter_path(@chapter) do %><i id="edit" class="fa fa-cog"></i> Edit<% end %> |
+  <%= link_to chapter_path(@chapter), :data => {:confirm => "You sure you want to delete this?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete<% end %>
 </p>
