@@ -5,3 +5,7 @@
 .chapter-text {
   font-family: 'Roboto Slab', serif;
 }
+
+.right {
+  text-align: right;
+}

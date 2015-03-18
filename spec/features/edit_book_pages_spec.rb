@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "the add a chapter process" do
-  it "takes you to a new chapter page" do
+describe "the edit a book process" do
+  it "takes you to an edit book page" do
     visit "/"
     click_on "Add an author"
     fill_in "First Name", :with=>"J.R."
@@ -14,11 +14,11 @@ describe "the add a chapter process" do
     fill_in "Summary", :with=>"Something about a ring, I think."
     click_on "Create Book"
     click_on "Fellowship"
-    click_on "Add a chapter"
-    expect(page).to have_content "New Chapter"
+    click_on "Edit"
+    expect(page).to have_content "Edit Book"
   end
 
-  it "adds a new chapter" do
+  it "edits a book" do
     visit "/"
     click_on "Add an author"
     fill_in "First Name", :with=>"J.R."
@@ -31,32 +31,11 @@ describe "the add a chapter process" do
     fill_in "Summary", :with=>"Something about a ring, I think."
     click_on "Create Book"
     click_on "Fellowship"
-    click_on "Add a chapter"
-    fill_in "Number", :with =>"2"
-    fill_in "Title", :with=>"The Council of Elrond"
-    fill_in "Body", :with=>"Next day Frodo woke early..."
-    click_on "Create Chapter"
-    expect(page).to have_content "Chapters"
-  end
-
-  it "gives an error when no number is entered" do
-    visit "/"
-    click_on "Add an author"
-    fill_in "First Name", :with=>"J.R."
-    fill_in "Middle Initial", :with=>"R."
-    fill_in "Last Name", :with=>"Tolkien"
-    click_on "Create Author"
-    click_on "Tolkien"
-    click_on "Add a book"
-    fill_in "Title", :with=> "The Fellowship of the Ring"
-    fill_in "Summary", :with=>"Something about a ring, I think."
-    click_on "Create Book"
-    click_on "Fellowship"
-    click_on "Add a chapter"
-    fill_in "Title", :with=>"The Council of Elrond"
-    fill_in "Body", :with=>"Next day Frodo woke early..."
-    click_on "Create Chapter"
-    expect(page).to have_content 'Oops'
+    click_on "Edit"
+    fill_in "Title", :with=>"The Ring Goes South"
+    fill_in "Summary", :with=>"Later that day the hobbits held a meeting of their own..."
+    click_on "Update Book"
+    expect(page).to have_content "edited"
   end
 
   it "gives an error when no title is entered" do
@@ -74,12 +53,19 @@ describe "the add a chapter process" do
     click_on "Fellowship"
     click_on "Add a chapter"
     fill_in "Number", :with =>"2"
+    fill_in "Title", :with=>"The Council of Elrond"
     fill_in "Body", :with=>"Next day Frodo woke early..."
     click_on "Create Chapter"
+    click_on "The Council"
+    click_on "Edit"
+    fill_in "Number", :with =>"3"
+    fill_in "Title", :with=>""
+    fill_in "Body", :with=>"Later that day the hobbits held a meeting of their own..."
+    click_on "Update Chapter"
     expect(page).to have_content 'Oops'
   end
 
-  it "gives an error when no body is entered" do
+  it "gives an error when no summary is entered" do
     visit "/"
     click_on "Add an author"
     fill_in "First Name", :with=>"J.R."
@@ -95,7 +81,14 @@ describe "the add a chapter process" do
     click_on "Add a chapter"
     fill_in "Number", :with =>"2"
     fill_in "Title", :with=>"The Council of Elrond"
+    fill_in "Body", :with=>"Next day Frodo woke early..."
     click_on "Create Chapter"
+    click_on "The Council"
+    click_on "Edit"
+    fill_in "Number", :with =>"3"
+    fill_in "Title", :with=>"The Ring Goes South"
+    fill_in "Body", :with=>""
+    click_on "Update Chapter"
     expect(page).to have_content 'Oops'
   end
 end

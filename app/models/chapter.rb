@@ -1,5 +1,5 @@
 class Chapter < ActiveRecord::Base
-  # belongs_to :book
+  belongs_to :book
 
   validates :title, :presence => true
   validates :body, :presence => true
